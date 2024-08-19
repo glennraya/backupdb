@@ -2,7 +2,6 @@
 
 use App\Models\User;
 use Inertia\Inertia;
-use Illuminate\Http\Request;
 use App\Models\DatabaseBackup;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,14 +34,13 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::post('/backup', [BackupController::class, 'backup']);
-    Route::get('/download-backup', [BackupController::class, 'downloadBackup']);
-
-    Route::post('/get-backups', function() {
-        return DatabaseBackup::all();
-    });
 
     Route::get('/download-backup/{path}', function($path) {
         return response()->download(storage_path("app/$path"));
+    });
+
+    Route::post('/get-backups', function() {
+        return DatabaseBackup::all();
     });
 
     Route::post('/delete-backup', [BackupController::class, 'deleteBackup']);

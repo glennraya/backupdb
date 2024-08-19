@@ -29,14 +29,11 @@ import { useEffect, useState } from 'react'
 export default function BackupDatabase({ auth }: PageProps) {
     const [backups, setBackups] = useState<DatabaseBackup[]>([])
 
-    // Load generate backup records.
+    // Load all generated backups.
     useEffect(() => {
-        axios
-            .post('/get-backups')
-            .then(response => {
-                setBackups(response.data)
-            })
-            .catch(error => {})
+        axios.post('/get-backups').then(response => {
+            setBackups(response.data)
+        })
     }, [])
 
     // Perform the backup process.
@@ -77,7 +74,7 @@ export default function BackupDatabase({ auth }: PageProps) {
 
             <div className="flex flex-col gap-4 overflow-y-scroll scroll-smooth py-4">
                 <div className="grid gap-4 px-8 xl:grid-cols-7">
-                    <Card className="relative h-fit w-full overflow-hidden xl:col-span-4">
+                    <Card className="relative h-fit w-full overflow-hidden xl:col-span-5">
                         <CardHeader>
                             <CardTitle className="flex items-center justify-between text-2xl font-bold">
                                 <span>Database Backups</span>
@@ -91,7 +88,7 @@ export default function BackupDatabase({ auth }: PageProps) {
                         </CardHeader>
                         <CardContent className="relative flex flex-col gap-2">
                             <Button
-                                className="flex items-center gap-2 self-start dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white"
+                                className="flex items-center gap-2 self-start hover:bg-gray-600 active:bg-black dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white"
                                 onClick={backup}
                                 disabled={isBackingUp}
                             >
@@ -156,7 +153,7 @@ export default function BackupDatabase({ auth }: PageProps) {
                                     </TableBody>
                                 </Table>
                             ) : (
-                                <div className="mt-2 rounded-lg bg-gray-100 py-4 text-center text-sm text-gray-500">
+                                <div className="mt-2 rounded-lg bg-gray-100 py-4 text-center text-sm text-gray-500 dark:bg-gray-800 dark:text-white">
                                     The database has never been backed up.
                                 </div>
                             )}

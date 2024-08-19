@@ -30,13 +30,11 @@ class ProcessDbBackup implements ShouldQueue
     public function handle(): void
     {
         try {
-            // throw new \Exception('The database has been corrupted.');
             $backup_file = $this->performBackup($this->user_id);
 
             broadcast(new BackupCompleted($this->user_id, 'The database has been successfully backed up.', $backup_file));
         } catch (\Exception $e) {
             broadcast(new BackupCompleted($this->user_id, 'An error has occurred: ' . $e->getMessage(), $backup_file));
         }
-
     }
 }

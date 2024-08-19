@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use App\Casts\HumanReadableTime;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DatabaseBackup extends Model
 {
@@ -16,11 +16,6 @@ class DatabaseBackup extends Model
         'path',
     ];
 
-    /**
-     * Cast the dates to human readable format.
-     *
-     * @var array
-     */
     protected $casts = [
         'created_at' => HumanReadableTime::class,
         'updated_at' => HumanReadableTime::class,

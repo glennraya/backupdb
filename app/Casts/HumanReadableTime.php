@@ -3,8 +3,8 @@
 namespace App\Casts;
 
 use Carbon\Carbon;
-use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
 class HumanReadableTime implements CastsAttributes
 {
