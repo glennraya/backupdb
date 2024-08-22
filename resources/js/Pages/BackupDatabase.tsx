@@ -31,7 +31,7 @@ export default function BackupDatabase({ auth }: PageProps) {
 
     // Load all generated backups.
     useEffect(() => {
-        axios.post('/get-backups').then(response => {
+        axios.get('/get-backups').then(response => {
             setBackups(response.data)
         })
     }, [])

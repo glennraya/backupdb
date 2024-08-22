@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
         return response()->download(storage_path("app/$path"));
     });
 
-    Route::post('/get-backups', function() {
+    Route::get('/get-backups', function() {
         return DatabaseBackup::all();
     });
 
